@@ -1,0 +1,21 @@
+#include <stdio.h>
+int main(){
+	int n, i, j;
+	int em[100000], es[100000] = { 0 };
+	int ste[9];
+	scanf("%d", &n);
+	for (i = 0; i < n; i++){
+		scanf("%d", &em[i]);
+		for (j = 0; j < 9; j++){
+			scanf("%d", &ste[j]);
+		}
+		for (j = 0; j < 9; j++){
+			es[i] = es[i] + ste[j];
+		}
+	}
+	for (i = 0; i < n; i++){
+		if (es[i] <= em[i]) printf("YES\n");
+		else printf("NO\n");
+	}
+	return 0;
+}

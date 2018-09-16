@@ -1,0 +1,25 @@
+#include <stdio.h>
+int main(){
+	int n, i, result;
+	int ary[10001];
+	int cpy[10001] = { 0 };
+	int chk1 = 16711680;
+	int chk2 = 65280;
+	int chk3 = 255;
+	scanf("%d", &n);
+	for (i = 0; i < n; i++) scanf("%u", &ary[i]);
+	for (i = 0; i < n; i++){
+		result = ary[i] << 24;
+		cpy[i] = result | cpy[i];
+		result = ary[i] << 8;
+		result = result & chk1;
+		cpy[i] = result | cpy[i];
+		result = ary[i] >> 8;
+		result = result & chk2;
+		cpy[i] = result | cpy[i];
+		result = ary[i] >> 24;
+		result = result & chk3;
+		cpy[i] = result | cpy[i];
+	}
+	for (i = 0; i < n; i++) printf("%u\n", cpy[i]);
+}

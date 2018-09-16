@@ -1,0 +1,41 @@
+#include <iostream>
+using namespace std;
+int main(){
+	int n, i, j, chk = 0;
+	char str[10][101];
+	char cpy[10][101];
+	int strlen[10];
+	int k = 0;
+	cin >> n;
+	for (i = 0; i < n; i++){
+		cin >> str[i];
+	}
+	for (i = 0; i < n; i++){
+		j = 0;
+		while (str[i][j] != '\0') j++;
+		strlen[i] = j - 1;
+	}
+	for (i = 0; i < n; i++){
+		j = 0;
+		while (chk == 0){
+			cpy[i][k] = str[i][j];
+			k++;
+			j = j + 2;
+			if (strlen[i] < j) chk++;
+		}
+		j = 1;
+		chk = 0;
+		while (chk == 0){
+			cpy[i][k] = str[i][j];
+			k++;
+			j = j + 2;
+			if (strlen[i] < j) chk++;
+		}
+		chk = 0;
+		cpy[i][k] = '\0';
+		k = 0;
+	}
+	for (i = 0; i < n; i++){
+		cout << cpy[i] << "\n";
+	}
+}
